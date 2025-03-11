@@ -116,4 +116,11 @@
     border-top: 1px solid #ddd;
     margin-top: auto;
   }
+
+  .next-btn:disabled {
+    background-color: #ccc !important;
+    color: #888 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
   

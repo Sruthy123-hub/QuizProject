@@ -33,7 +33,9 @@
 
     <div class="buttons">
       <a routerLink="/dashboard" class="exit-link">Exit Assessment</a>
-      <button class="next-btn" (click)="saveSelections()">Next</button>
+      <button class="next-btn" (click)="saveSelections()" [disabled]="selectedGenres.length === 0">Next</button>
+
+
     </div>
   </div>
 </div>
