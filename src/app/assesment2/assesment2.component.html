@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="assessment-page">
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progress"></div>
+    </div>
+    <p class="progress-text">{{ currentStep }} of 5</p>
+  </div>
+
+  <!-- Question Section -->
+  <h2 class="question">How long have you been an Angular developer?</h2>
+
+  <!-- Options -->
+  <div class="options">
+    <label *ngFor="let option of options">
+      <input type="radio" name="experience" [value]="option"
+             [checked]="option === selectedOption"
+             (change)="onOptionSelect(option)">
+      {{ option }}
+    </label>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="buttons">
+    <button class="prev-btn" (click)="goBack()">← Previous Question</button>
+    <button class="next-btn" [disabled]="!selectedOption" (click)="goToNext()">Next</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

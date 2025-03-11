@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div class="assessment-page">
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progress"></div>
+    </div>
+    <p class="progress-text">{{ currentStep }} of 5</p>
+  </div>
+
+  <!-- Question Section -->
+  <h2 class="question">What is Jerry Seinfeld’s address in Seinfeld?</h2>
+
+  <!-- Address Form -->
+  <div class="form-container">
+    <label class="form-label">Address</label>
+
+    <label class="sub-label">Address 1</label>
+    <input type="text" class="form-input" placeholder="Address 1" [(ngModel)]="address1" (input)="validateAddress()" />
+    <!-- <p class="error-message" *ngIf="address1Error">Only letters and numbers are allowed.</p> -->
+
+    <label class="sub-label">Address 2</label>
+    <input type="text" class="form-input" placeholder="Address 2" [(ngModel)]="address2" (input)="validateAddress()" />
+    <!-- <p class="error-message" *ngIf="address2Error">Only letters and numbers are allowed.</p> -->
+
+    <div class="city-state-zip">
+      <div>
+        <label class="sub-label">City</label>
+        <input type="text" class="form-input small-input" placeholder="City" [(ngModel)]="city" (input)="validateCityState('city')" />
+        <p class="error-message" *ngIf="cityError">Only letters are allowed.</p>
+      </div>
+      <div>
+        <label class="sub-label">State</label>
+        <input type="text" class="form-input small-input" placeholder="State" [(ngModel)]="state" (input)="validateCityState('state')" />
+        <p class="error-message" *ngIf="stateError">Only letters are allowed.</p>
+      </div>
+      <div>
+        <label class="sub-label">Zip Code</label>
+        <input type="text" class="form-input small-input" placeholder="Zip code" [(ngModel)]="zip" (input)="validateZip()" />
+        <p class="error-message" *ngIf="zipError">Only numbers are allowed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="buttons-container">
+    <a class="prev-btn" (click)="goBack()">← Previous Question</a>
+    <button class="next-btn" [disabled]="hasErrors()" (click)="saveAndNext()">Next</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

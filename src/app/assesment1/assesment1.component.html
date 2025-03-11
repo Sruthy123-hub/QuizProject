@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="assessment-page">
+  <div class="assessment-container">
+    <!-- Show Progress Bar Only when Progress > 0 (After First Selection) -->
+    <div class="progress-bar" *ngIf="progress > 0">
+      <div class="progress" [style.width.%]="progress"></div>
+    </div>
+    <p class="progress-text" *ngIf="progress > 0">1 of 5 Completed</p>
+
+    <h2>My favorite movie genre is:</h2>
+
+    <div class="options">
+      <div class="column">
+        <label *ngFor="let genre of genres.slice(0, 6)">
+          <input 
+            type="checkbox" 
+            [checked]="isChecked(genre)" 
+            (change)="onCheckboxChange($event, genre)"> 
+          {{ genre }}
+        </label>
+      </div>
+      <div class="column">
+        <label *ngFor="let genre of genres.slice(6)">
+          <input 
+            type="checkbox" 
+            [checked]="isChecked(genre)" 
+            (change)="onCheckboxChange($event, genre)"> 
+          {{ genre }}
+        </label>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a routerLink="/dashboard" class="exit-link">Exit Assessment</a>
+      <button class="next-btn" (click)="saveSelections()">Next</button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,58 @@
+@media (max-width: 280px) {
+    .container {
+      padding: 10px;
+    }
+  }
+
+  /* ===================== COMMON STYLES ===================== */
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+      width: 90%;
+      padding: 1rem;
+    }
+  
+    .options {
+      flex-direction: column;
+    }
+  
+    .buttons {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+  
+    .footer {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  
+  /* Footer Styling */
+  .footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+  }
+  
+  .footer .links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .footer .links a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+  }
+  
+  .footer .links a:hover {
+    text-decoration: underline;
+  }
+  

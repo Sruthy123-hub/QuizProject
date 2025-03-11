@@ -1,0 +1,144 @@
+/* Apply background color to the entire screen */
+html, body {
+    background-color:#fdf8f1; /* Light beige background */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Ensure the assessment page takes full height */
+.assessment-page {
+    max-width: 100%;
+    margin: auto;
+    background-color:#fdf8f1;
+    text-align: center;
+    padding: 40px;
+    min-height: 100vh; /* Ensures it covers the full screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ensure header and footer take full width */
+app-header, app-footer {
+    width: 100%;
+    background-color: white;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 6px;
+    background-color: #2ca02c;
+    width: 100%;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Question Styling */
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.sub-label {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    display: block;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.city-state-zip {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.city-state-zip div {
+    flex: 1;
+}
+
+.small-input {
+    width: 100%;
+}
+
+/* Navigation Buttons */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.prev-btn {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.next-btn {
+    background-color: #ffd43b;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.next-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Ensure validation messages align properly */
+.form-input.ng-invalid.ng-touched {
+    border-color: red;
+}

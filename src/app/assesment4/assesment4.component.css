@@ -1,0 +1,128 @@
+/* Apply background color to the entire screen */
+html, body {
+    background-color:#fdf8f1; /* Adjust this color to match your Figma */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the assessment page takes the full height */
+.assessment-page {
+    max-width: 100%;
+    background-color:#fdf8f1; 
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 40px;
+    min-height: calc(100vh - 120px); /* Adjust to fit content properly */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ensure header and footer take full width */
+app-header, app-footer {
+    width: 100%;
+    background-color: white;
+}
+
+/* Style the progress bar */
+.progress-bar-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 6px;
+    background-color: #2ca02c;
+    width: 80%;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Centering options and ensuring proper spacing */
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    max-width: 650px;
+    margin: auto;
+    gap: 50px; /* Increased spacing between left and right groups */
+}
+
+.options-left,
+.options-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.long-text {
+    max-width: 300px;
+}
+
+/* Position buttons at the bottom of the screen */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style the buttons */
+.prev-btn {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.next-btn {
+    background-color: #ffd43b;
+    color: black;
+    padding: 10px 25px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.next-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
