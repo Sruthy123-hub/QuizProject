@@ -20,34 +20,35 @@
     <strong>Add Favorite Movie</strong> to enter its details.)
   </p>
 
-  <!-- Movie List -->
-  <div *ngFor="let movie of movies; let i = index" class="form-container">
-    <div class="form-group">
-      <label>Title</label>
-      <input *ngIf="!movie.isSaved" type="text" [(ngModel)]="movie.title" placeholder="Enter movie title" />
-      <p *ngIf="movie.isSaved" class="saved-text">{{ movie.title }}</p>
-    </div>
+  <!-- Movie List using FormArray -->
+  <form [formGroup]="assessmentForm">
+    <div formArrayName="movies">
+      <div *ngFor="let movieCtrl of movies.controls; let i = index" class="form-container" [formGroupName]="i">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" formControlName="title" placeholder="Enter movie title" />
+          <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('title')?.value }}</p>
+        </div>
 
-    <!-- Add Movie Button Just Below Title Input -->
+        <div class="form-group">
+          <label>Year of Release</label>
+          <input type="text" formControlName="year" placeholder="Enter year of release" (input)="validateYear(i)" />
+          <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('year')?.value }}</p>
 
-    <div class="form-group">
-        <label>Year of Release</label>
-        <input *ngIf="!movie.isSaved" type="text" [(ngModel)]="movie.year" placeholder="Enter year of release" (input)="validateYear(i)" />
-        <p *ngIf="movie.isSaved" class="saved-text">{{ movie.year }}</p>
-        
-        <!-- Error Message for Year in Red -->
-        <p *ngIf="movie.yearError" class="error-text">Year must be a number</p>
+          <!-- Error Message for Year -->
+          <p *ngIf="movieCtrl.get('yearError')?.value" class="error-text">Year must be a number</p>
+        </div>
       </div>
-      
-  </div>
-  <button class="add-movie-btn" style="margin-right:460px ;" (click)="addMovie()">+ Add Favorite Movie</button>
+    </div>
+  </form>
 
+  <button class="add-movie-btn" style="margin-right:460px;" (click)="addMovie()">+ Add Favorite Movie</button>
 
   <!-- Buttons Fixed at Bottom -->
   <div class="buttons-container">
     <div class="buttons">
       <button class="prev-btn" (click)="goBack()">← Previous Question</button>
-      <button   [disabled]="!isNextEnabled()"  class="next-btn" (click)="saveAndNext()">Next</button>
+      <button [disabled]="!isNextEnabled()" class="next-btn" (click)="saveAndNext()">Next</button>
     </div>
   </div>
 </div>

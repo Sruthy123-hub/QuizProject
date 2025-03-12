@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,29 +8,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./assesment5.component.css']
 })
 export class Assesment5Component {
-  progress = 100; // 5 of 5 completed (100%)
+  addressForm!: FormGroup;
+  progress = 100; // Step 5 of 5 completed
   currentStep = 5;
-  address1 = '';
-  address2 = '';
-  city = '';
-  state = '';
-  zip = '';
 
-  address1Error = false;
-  address2Error = false;
-  cityError = false;
-  stateError = false;
-  zipError = false;
-
-  constructor(private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     // Retrieve saved data if available
-    this.address1 = localStorage.getItem('address1') || '';
-    this.address2 = localStorage.getItem('address2') || '';
-    this.city = localStorage.getItem('city') || '';
-    this.state = localStorage.getItem('state') || '';
-    this.zip = localStorage.getItem('zip') || '';
+    this.addressForm = this.fb.group({
+      address1: [localStorage.getItem('address1') || '', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]+$/)]],
+      address2: [localStorage.getItem('address2') || '', [Validators.pattern(/^[A-Za-z0-9\s]+$/)]],
+      city: [localStorage.getItem('city') || '', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
+      state: [localStorage.getItem('state') || '', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
+      zip: [localStorage.getItem('zip') || '', [Validators.required, Validators.pattern(/^[0-9]+$/)]]
+    });
+
+    // Automatically save data to localStorage when form values change
+    this.addressForm.valueChanges.subscribe(() => {
+      localStorage.setItem('address1', this.addressForm.get('address1')?.value);
+      localStorage.setItem('address2', this.addressForm.get('address2')?.value);
+      localStorage.setItem('city', this.addressForm.get('city')?.value);
+      localStorage.setItem('state', this.addressForm.get('state')?.value);
+      localStorage.setItem('zip', this.addressForm.get('zip')?.value);
+    });
   }
 
   goBack() {
@@ -37,46 +39,15 @@ export class Assesment5Component {
   }
 
   saveAndNext() {
-    if (!this.hasErrors()) {
-      localStorage.setItem('address1', this.address1);
-      localStorage.setItem('address2', this.address2);
-      localStorage.setItem('city', this.city);
-      localStorage.setItem('state', this.state);
-      localStorage.setItem('zip', this.zip);
-      // Navigate to next step (if applicable)
-      this.router.navigate(['/success'])
+    if (this.addressForm.valid) {
+      this.router.navigate(['/success']);
     }
-  }
-
-  validateAddress() {
-    const addressRegex = /^[A-Za-z0-9\s]+$/; // Letters and numbers allowed
-    this.address1Error = !addressRegex.test(this.address1);
-    this.address2Error = !addressRegex.test(this.address2);
-  }
-
-  validateCityState(field: string) {
-    const textRegex = /^[A-Za-z\s]+$/; // Only letters allowed
-    if (field === 'city') {
-      this.cityError = !textRegex.test(this.city);
-    } else if (field === 'state') {
-      this.stateError = !textRegex.test(this.state);
-    }
-  }
-
-  validateZip() {
-    const zipRegex = /^[0-9]+$/; // Only numbers allowed
-    this.zipError = !zipRegex.test(this.zip);
-  }
-
-  hasErrors(): boolean {
-    return this.address1Error || this.address2Error || this.cityError || this.stateError || this.zipError ||
-           !this.address1 || !this.city || !this.state || !this.zip;
   }
 
   getProgressSegments() {
     const totalSegments = 5;
     const completedSegments = Math.round((this.progress / 100) * totalSegments);
-  
+
     return Array.from({ length: totalSegments }, (_, index) => ({
       completed: index < completedSegments
     }));

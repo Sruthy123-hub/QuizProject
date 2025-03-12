@@ -18,41 +18,53 @@
   <!-- Question Section -->
   <h2 class="question">What is Jerry Seinfeld’s address in Seinfeld?</h2>
 
-  <!-- Address Form -->
-  <div class="form-container">
-    <label class="form-label">Address</label>
+  <!-- Address Form using Reactive Forms -->
+  <form [formGroup]="addressForm">
+    <div class="form-container">
+      <label class="form-label">Address</label>
 
-    <label class="sub-label">Address 1</label>
-    <input type="text" class="form-input" placeholder="Address 1" [(ngModel)]="address1" (input)="validateAddress()" />
-    <!-- <p class="error-message" *ngIf="address1Error">Only letters and numbers are allowed.</p> -->
+      <label class="sub-label">Address 1</label>
+      <input type="text" class="form-input" placeholder="Address 1" formControlName="address1" />
+      <p class="error-message" *ngIf="addressForm.controls['address1'].invalid && addressForm.controls['address1'].touched">
+        Only letters and numbers are allowed.
+      </p>
 
-    <label class="sub-label">Address 2</label>
-    <input type="text" class="form-input" placeholder="Address 2" [(ngModel)]="address2" (input)="validateAddress()" />
-    <!-- <p class="error-message" *ngIf="address2Error">Only letters and numbers are allowed.</p> -->
+      <label class="sub-label">Address 2</label>
+      <input type="text" class="form-input" placeholder="Address 2" formControlName="address2" />
+      <p class="error-message" *ngIf="addressForm.controls['address2'].invalid && addressForm.controls['address2'].touched">
+        Only letters and numbers are allowed.
+      </p>
 
-    <div class="city-state-zip">
-      <div>
-        <label class="sub-label">City</label>
-        <input style="min-width:350px" type="text" class="form-input small-input" placeholder="City" [(ngModel)]="city" (input)="validateCityState('city')" />
-        <p class="error-message" *ngIf="cityError">Only letters are allowed.</p>
-      </div>
-      <div>
-        <label class="sub-label">State</label>
-        <input type="text" class="form-input small-input" placeholder="State" [(ngModel)]="state" (input)="validateCityState('state')" />
-        <p class="error-message" *ngIf="stateError">Only letters are allowed.</p>
-      </div>
-      <div>
-        <label class="sub-label">Zip Code</label>
-        <input type="text" class="form-input small-input" placeholder="Zip code" [(ngModel)]="zip" (input)="validateZip()" />
-        <p class="error-message" *ngIf="zipError">Only numbers are allowed.</p>
+      <div class="city-state-zip">
+        <div>
+          <label class="sub-label">City</label>
+          <input style="min-width:350px" type="text" class="form-input small-input" placeholder="City" formControlName="city" />
+          <p class="error-message" *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
+            Only letters are allowed.
+          </p>
+        </div>
+        <div>
+          <label class="sub-label">State</label>
+          <input type="text" class="form-input small-input" placeholder="State" formControlName="state" />
+          <p class="error-message" *ngIf="addressForm.controls['state'].invalid && addressForm.controls['state'].touched">
+            Only letters are allowed.
+          </p>
+        </div>
+        <div>
+          <label class="sub-label">Zip Code</label>
+          <input type="text" class="form-input small-input" placeholder="Zip code" formControlName="zip" />
+          <p class="error-message" *ngIf="addressForm.controls['zip'].invalid && addressForm.controls['zip'].touched">
+            Only numbers are allowed.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Navigation Buttons -->
   <div class="buttons-container">
     <a class="prev-btn" (click)="goBack()">← Previous Question</a>
-    <button class="next-btn" [disabled]="hasErrors()" (click)="saveAndNext()">Next</button>
+    <button class="next-btn" [disabled]="addressForm.invalid" (click)="saveAndNext()">Next</button>
   </div>
 </div>
 
