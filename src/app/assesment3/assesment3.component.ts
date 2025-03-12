@@ -27,16 +27,26 @@ export class Assesment3Component {
       }));
     }
 
-    // If no saved movies exist, start with one empty input field
+   
     if (this.movies.length === 0) {
       this.movies.push({ title: '', year: '', isSaved: false, yearError: false });
     }
   }
 
-  addMovie() {
-    this.showFields = true;
-    this.movies.push({ title: '', year: '', isSaved: false, yearError: false }); // Immediately show new input fields
+  // Function to check if Next button should be enabled
+  isNextEnabled(): boolean {
+    return this.movies.some(movie => 
+      movie.title.trim() !== '' && 
+      movie.year.trim() !== '' && 
+      !movie.yearError
+    );
   }
+
+// Modify addMovie() to disable Next button when a new movie is added
+addMovie() {
+  this.movies.push({ title: '', year: '', isSaved: false, yearError: false });
+}
+
 
   validateYear(index: number) {
     const yearValue = this.movies[index].year;
@@ -50,16 +60,27 @@ export class Assesment3Component {
     // Remove non-numeric characters
     this.movies[index].year = yearValue.replace(/[^0-9]/g, '');
   }
-
   saveAndNext() {
+    // Prevent navigation if any movie has a validation error
     if (this.movies.some(movie => movie.yearError)) {
-      return; // Prevent navigation if there are validation errors
+      return;
     }
-
-    localStorage.setItem('favoriteMovies', JSON.stringify(this.movies));
+  
+    // Filter out movies that have no title and year
+    const validMovies = this.movies.filter(movie => movie.title.trim() !== '' && movie.year.trim() !== '');
+  
+    if (validMovies.length === 0) {
+      return; // If no valid movies exist, do nothing
+    }
+  
+    // Save only valid movies to local storage
+    localStorage.setItem('favoriteMovies', JSON.stringify(validMovies));
     localStorage.setItem('assessmentProgress', '60'); // Save progress
-    this.router.navigate(['/assessment4']); // Navigate to next assessment
+  
+    // Navigate to the next assessment
+    this.router.navigate(['/assessment4']);
   }
+  
 
   goBack() {
     this.router.navigate(['/assesment2']); // Navigate back to Assessment 2
@@ -73,4 +94,6 @@ export class Assesment3Component {
       completed: index < completedSegments
     }));
   }
+
+ 
 }

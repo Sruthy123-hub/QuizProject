@@ -74,7 +74,7 @@ export class Assesment5Component {
   }
 
   getProgressSegments() {
-    const totalSegments = 5; // Example: Total number of segments
+    const totalSegments = 5;
     const completedSegments = Math.round((this.progress / 100) * totalSegments);
   
     return Array.from({ length: totalSegments }, (_, index) => ({

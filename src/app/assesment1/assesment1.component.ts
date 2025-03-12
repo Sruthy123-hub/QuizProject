@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./assesment1.component.css']
 })
 export class Assesment1Component {
-  progress = 0; // Initially, no progress
-  selectedGenres: string[] = []; // Store selected genres
-  progressUpdated = false; // Track if progress has been set
+  progress = 0; 
+  selectedGenres: string[] = [];
+  progressUpdated = false; 
 
   genres = [
     'Action', 'Horror', 'Drama', 'Thriller', 'Science Fiction', 'Fantasy',

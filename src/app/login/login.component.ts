@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  loginForm !: FormGroup;
   isLoading = false; 
 
   constructor(
@@ -20,12 +20,14 @@ export class LoginComponent {
     private messageService: MessageService
   ) {
     
-    this.loginForm = this.fb.group({
+  
+  }
+  ngOnInit() {
+     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-
   onLogin() {
     
     if (this.loginForm.valid) {
@@ -60,35 +62,39 @@ export class LoginComponent {
             });
 
            
-            setTimeout(() => {
+             setTimeout(() => {
               this.router.navigate(['/dashboard']);
-            }, 2000);
+                 }, 2000);
           } else {
-            this.showError(response.message || 'Login failed.');
+            
+            this.messageService.add({
+              severity: 'warn',
+              summary: 'Warning',
+              detail: response.message || 'Login failed.',
+              life: 2000
+            });
           }
         },
         error: () => {
           this.isLoading = false; 
-          // this.showError('Invalid credentials. Please try again.');
           this.messageService.add({
             severity: 'warn',
             summary: 'Warning',
             detail: `Invalid credentials. Please try again.`,
-            life: 2000000000000000
+            life: 2000
           });
         }
       });
     } else {
-      this.showError('Please fill in all required fields.');
+     
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warning',
+        detail: `Please fill in all required fields.`,
+        life: 2000
+      });
     }
   }
 
-  private showError(message: string) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: 'Warning',
-      detail: message,
-      life: 2000
-    });
-  }
+
 }

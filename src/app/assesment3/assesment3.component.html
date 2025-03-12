@@ -47,7 +47,7 @@
   <div class="buttons-container">
     <div class="buttons">
       <button class="prev-btn" (click)="goBack()">← Previous Question</button>
-      <button class="next-btn" (click)="saveAndNext()">Next</button>
+      <button   [disabled]="!isNextEnabled()"  class="next-btn" (click)="saveAndNext()">Next</button>
     </div>
   </div>
 </div>
