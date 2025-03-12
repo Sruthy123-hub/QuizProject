@@ -23,10 +23,23 @@ export class LoginComponent {
   
   }
   ngOnInit() {
-     this.loginForm = this.fb.group({
+    // Reset form
+    this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  
+    // Clear stored session on login page load (prevents stale login states)
+    this.clearSessionData();
+  }
+  
+  clearSessionData() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    localStorage.removeItem('image');
   }
   onLogin() {
     

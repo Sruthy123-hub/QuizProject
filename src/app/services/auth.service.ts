@@ -34,8 +34,11 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.clear();
-    window.location.href = '/login'; // Redirect to login page
+    localStorage.clear(); // Clear all stored session data
+    sessionStorage.clear(); // Clear any session-related storage
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload(); // Ensure fresh login state
+    });
   }
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token'); // Check if token exists
