@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-assesment1',
@@ -8,65 +9,68 @@ import { Router } from '@angular/router';
   styleUrls: ['./assesment1.component.css']
 })
 export class Assesment1Component {
-  progress = 0; 
-  selectedGenres: string[] = [];
-  progressUpdated = false; 
+  assessmentForm!: FormGroup;
+  progress = 0;
 
-  genres = [
+  genres: string[] = [
     'Action', 'Horror', 'Drama', 'Thriller', 'Science Fiction', 'Fantasy',
     'Western', 'Romantic', 'Comedy', 'Kevin Hart Buddy Comedy', 'Noir', 'None of the above'
   ];
 
-  constructor(private router: Router) {
-    // Retrieve saved progress
-    const savedProgress = localStorage.getItem('assessmentProgress');
-    if (savedProgress) {
-      this.progress = parseInt(savedProgress, 10);
-      this.progressUpdated = this.progress >= 20;
-    }
+  constructor(private fb: FormBuilder, private router: Router) {}
 
-    // Retrieve selected genres from localStorage
-    const savedGenres = localStorage.getItem('selectedGenres');
-    if (savedGenres) {
-      this.selectedGenres = JSON.parse(savedGenres);
-    }
+  ngOnInit() {
+    const savedGenres = JSON.parse(localStorage.getItem('selectedGenres') || '[]');
+
+    // Initialize FormArray with checkboxes correctly
+    this.assessmentForm = this.fb.group({
+      selectedGenres: this.fb.array(
+        this.genres.map(genre => new FormControl(savedGenres.includes(genre))) // Bind with saved selections
+      )
+    });
+
+    // Update progress if there are saved selections
+    this.updateProgress();
+
+    // Listen for changes in checkboxes
+    this.selectedGenresArray.valueChanges.subscribe(() => {
+      this.updateProgress();
+    });
   }
 
-  // Handle checkbox selection and store it
-  onCheckboxChange(event: any, genre: string) {
-    if (event.target.checked) {
-      this.selectedGenres.push(genre);
-    } else {
-      this.selectedGenres = this.selectedGenres.filter(item => item !== genre);
-    }
+  // Get FormArray
+  get selectedGenresArray(): FormArray {
+    return this.assessmentForm.get('selectedGenres') as FormArray;
+  }
 
-    // Store updated selections in localStorage
-    localStorage.setItem('selectedGenres', JSON.stringify(this.selectedGenres));
+  // Check if any selection is made
+  isSelectionMade(): boolean {
+    return this.selectedGenresArray.value.includes(true);
+  }
 
-    // Set progress to 20% when the first selection is made
-    if (!this.progressUpdated && this.selectedGenres.length > 0) {
+  // Update progress dynamically when a checkbox is selected
+  updateProgress() {
+    const selectedGenres = this.selectedGenresArray.value.filter((checked: boolean) => checked);
+    this.progress = selectedGenres.length > 0 ? 20 : 0;
+  }
+
+  // Save selections and navigate
+  saveSelections() {
+    const selectedGenres = this.genres.filter((_, i) => this.selectedGenresArray.value[i]);
+    localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
+
+    if (selectedGenres.length > 0) {
       this.progress = 20;
-      this.progressUpdated = true;
       localStorage.setItem('assessmentProgress', this.progress.toString());
     }
-  }
 
-  // Save selections and navigate to the next assessment
-  saveSelections() {
-    console.log('Selected Genres:', this.selectedGenres);
-    localStorage.setItem('selectedGenres', JSON.stringify(this.selectedGenres));
     this.router.navigate(['/assesment2']);
   }
 
-  // Check if a genre was previously selected
-  isChecked(genre: string): boolean {
-    return this.selectedGenres.includes(genre);
-  }
-
+  // Get progress segments for UI
   getProgressSegments() {
-    const totalSegments = 5; // Example: Total number of segments
+    const totalSegments = 5;
     const completedSegments = Math.round((this.progress / 100) * totalSegments);
-  
     return Array.from({ length: totalSegments }, (_, index) => ({
       completed: index < completedSegments
     }));
