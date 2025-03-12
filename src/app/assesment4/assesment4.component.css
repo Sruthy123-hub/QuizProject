@@ -30,28 +30,37 @@ app-header, app-footer {
 }
 
 /* Style the progress bar */
-.progress-bar-container {
-    margin-bottom: 30px;
-}
-
 .progress-bar {
+    display: flex;
     width: 100%;
-    height: 6px;
-    background-color: #d8d8d8;
-    border-radius: 5px;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .progress {
-    height: 6px;
-    background-color: #2ca02c;
-    width: 80%;
+    display: flex;
+    gap: 4px; /* Space between segments */
+    width: 100%;
+    height: 8px;
 }
 
-.progress-text {
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
+.progress-segment {
+    flex-grow: 1;
+    height: 100%;
+    background: #009970; /* Change color as needed */
+}
+.progress-bar-container
+{
+  width: 100%;
+  max-width: 700px;
+  background-color: #fdf8f1;
+  padding: 0px 2rem;
+  text-align: left;
+  margin: 0 auto;
+ 
 }
 
 .question {
@@ -67,8 +76,8 @@ app-header, app-footer {
     justify-content: space-between;
     text-align: left;
     max-width: 650px;
-    margin: auto;
-    gap: 50px; /* Increased spacing between left and right groups */
+    margin: 0 auto;
+    gap: 150px; /* Increased spacing between left and right groups */
 }
 
 .options-left,
@@ -96,7 +105,7 @@ label {
     justify-content: space-between;
     margin-top: auto;
     position: absolute;
-    bottom: 40px;
+    bottom: 80px;
     left: 0;
     right: 0;
     max-width: 800px;

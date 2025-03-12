@@ -64,4 +64,13 @@ export class Assesment3Component {
   goBack() {
     this.router.navigate(['/assesment2']); // Navigate back to Assessment 2
   }
+
+  getProgressSegments() {
+    const totalSegments = 5; // Example: Total number of segments
+    const completedSegments = Math.round((this.progress / 100) * totalSegments);
+  
+    return Array.from({ length: totalSegments }, (_, index) => ({
+      completed: index < completedSegments
+    }));
+  }
 }

@@ -27,7 +27,7 @@ export class LoginComponent {
   }
 
   onLogin() {
-    debugger
+    
     if (this.loginForm.valid) {
       this.isLoading = true; 
 
@@ -60,14 +60,22 @@ export class LoginComponent {
             });
 
            
-            this.router.navigate(['/dashboard']);
+            setTimeout(() => {
+              this.router.navigate(['/dashboard']);
+            }, 2000);
           } else {
             this.showError(response.message || 'Login failed.');
           }
         },
         error: () => {
           this.isLoading = false; 
-          this.showError('Invalid credentials. Please try again.');
+          // this.showError('Invalid credentials. Please try again.');
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Warning',
+            detail: `Invalid credentials. Please try again.`,
+            life: 2000000000000000
+          });
         }
       });
     } else {

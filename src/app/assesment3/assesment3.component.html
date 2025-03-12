@@ -3,8 +3,12 @@
 <div class="assessment-page">
   <!-- Progress Bar -->
   <div class="progress-bar-container">
-    <div class="progress-bar">
-      <div class="progress" [style.width.%]="progress"></div>
+    <div class="progress">
+      <div 
+        *ngFor="let step of getProgressSegments()" 
+        class="progress-segment" 
+        [style.background]="step.completed ? '#009970' : '#ddd'">
+      </div>
     </div>
     <p class="progress-text">{{ currentStep }} of 5</p>
   </div>
@@ -25,7 +29,6 @@
     </div>
 
     <!-- Add Movie Button Just Below Title Input -->
-    <button class="add-movie-btn" *ngIf="movie.isSaved && i === movies.length - 1" (click)="addMovie()">+ Add Favorite Movie</button>
 
     <div class="form-group">
         <label>Year of Release</label>
@@ -37,6 +40,8 @@
       </div>
       
   </div>
+  <button class="add-movie-btn" style="margin-right:460px ;" (click)="addMovie()">+ Add Favorite Movie</button>
+
 
   <!-- Buttons Fixed at Bottom -->
   <div class="buttons-container">

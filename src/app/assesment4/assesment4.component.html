@@ -3,8 +3,12 @@
 <div class="assessment-page">
   <!-- Progress Bar -->
   <div class="progress-bar-container">
-    <div class="progress-bar">
-      <div class="progress" [style.width.%]="progress"></div>
+    <div class="progress">
+      <div 
+        *ngFor="let step of getProgressSegments()" 
+        class="progress-segment" 
+        [style.background]="step.completed ? '#009970' : '#ddd'">
+      </div>
     </div>
     <p class="progress-text">{{ currentStep }} of 5</p>
   </div>

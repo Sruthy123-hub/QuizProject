@@ -1,7 +1,6 @@
 /* Success Page Styles */
 .success-page {
-    display: flex;
-    justify-content: center;
+
     align-items: center;
     height: 100vh;
     background-color: white;
@@ -18,9 +17,14 @@
   /* Left Side (Text Section) */
   .success-text {
     flex: 1;
-    background-color: #fdf8eb; /* Light pink background */
     padding: 80px;
     text-align: left;
+    height: 100vh;
+    display: flex
+;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
   
   .success-text h1 {

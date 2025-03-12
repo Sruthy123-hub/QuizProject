@@ -1,0 +1,57 @@
+::ng-deep .p-toast-message-text {
+    font-family: 'Arial', sans-serif;
+    padding: 15px;
+    border-radius: 5px;
+    
+}
+
+/* 🔴 Error Message - Red */
+::ng-deep .p-toast-message-error {
+    background-color: #ffeeee;
+    border-left: 4px solid #e74c3c;
+}
+
+/* 🟢 Success Message - Green */
+::ng-deep .p-toast-message-success {
+    background-color: #e9f9ee; 
+    border-left: 4px solid #28a745; 
+}
+
+/* 🔶 Warning Message - Orange */
+::ng-deep .p-toast-message-warn {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+::ng-deep .p-toast-summary {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+::ng-deep .p-toast-message-error .p-toast-summary {
+    color: #e74c3c;
+}
+
+::ng-deep .p-toast-message-success .p-toast-summary {
+    color: #28a745;
+}
+
+::ng-deep .p-toast-message-warn .p-toast-summary {
+    color: #ffc107;
+}
+
+::ng-deep .p-toast-message-icon {
+    display: none;
+}
+
+::ng-deep .p-toast-detail {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+::ng-deep [data-pc-section="text"] {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

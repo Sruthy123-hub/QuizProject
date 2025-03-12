@@ -31,4 +31,13 @@ export class Assesment4Component {
       this.router.navigate(['/assessment5']);
     }
   }
+
+  getProgressSegments() {
+    const totalSegments = 5; // Example: Total number of segments
+    const completedSegments = Math.round((this.progress / 100) * totalSegments);
+  
+    return Array.from({ length: totalSegments }, (_, index) => ({
+      completed: index < completedSegments
+    }));
+  }
 }

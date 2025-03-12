@@ -72,4 +72,13 @@ export class Assesment5Component {
     return this.address1Error || this.address2Error || this.cityError || this.stateError || this.zipError ||
            !this.address1 || !this.city || !this.state || !this.zip;
   }
+
+  getProgressSegments() {
+    const totalSegments = 5; // Example: Total number of segments
+    const completedSegments = Math.round((this.progress / 100) * totalSegments);
+  
+    return Array.from({ length: totalSegments }, (_, index) => ({
+      completed: index < completedSegments
+    }));
+  }
 }
