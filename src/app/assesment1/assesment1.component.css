@@ -1,21 +1,15 @@
 /* Ensure the assessment page fills the whole screen */
 .assessment-page {
+    margin: 100px 0px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: calc(100vh - 120px); /* Adjusts for header and footer */
-    background-color:#fdf8f1;
-    padding: 2rem;
   }
   
   /* Full-width container inside */
   .assessment-container {
     width: 100%;
     max-width: 900px;
-    background-color: #fdf8f1;
     padding: 2rem;
-    text-align: left;
   }
   
   .progress-bar {
@@ -43,9 +37,17 @@
   
   /* Typography */
   h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 30px;
+    color: #363636;
+  }
+
+  .sub_heading{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 60px;
+    color: #363636;
   }
   
   .subtext {
@@ -53,30 +55,33 @@
     color: #666;
     margin-bottom: 20px;
   }
-  
+
   /* Options */
   .options {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: start;
+    gap: 35%;
     margin-bottom: 20px;
   }
-  
+
   .column {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  
   label {
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 20px;
     color: #333;
+    margin-bottom: 15px;
   }
   
   input[type="checkbox"] {
-    margin-right: 8px;
+    accent-color: black;
+    margin-right: 15px;
+    scale: 1.7;
+    margin-left: 5px;
   }
   
   /* Buttons */
@@ -84,12 +89,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 60px;
   }
   
   .exit-link {
-    color: #007bff;
-    font-size: 14px;
+    color: #22549F;
+    font-size: 20px;
+    font-weight: 400;
     text-decoration: none;
   }
   
@@ -101,29 +107,47 @@
     background-color: #fdd835;
     color: #333;
     border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
+    width: 240px;
+    height: 55px;
+    font-size: 24px;
+    font-weight: 400;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid black;
+    }
+  }
+  @media (max-width: 768px) {
+    .next-btn {
+      width: 220px;
+      height: 50px;
+      font-size: 20px;
+    }
+    .column  {
+      gap: 50%;
+    }
+    input[type="checkbox"] {
+      scale: 1.2;
+    }
+    label {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .sub_heading{
+      margin-bottom: 30px;
+    }
+    .assessment-container {
+      padding: 1rem;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
   }
   
-  .next-btn:hover {
-    background-color: #fbc02d;
-  }
-  
-  /* Make sure footer is at the bottom */
-  .footer {
-    width: 100%;
-    text-align: center;
-    padding: 1rem;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #ddd;
-    margin-top: auto;
-  }
 
   .next-btn:disabled {
     background-color: #ccc !important;

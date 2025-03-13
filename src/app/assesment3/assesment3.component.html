@@ -1,54 +1,58 @@
 <app-header></app-header>
 
 <div class="assessment-page">
-  <!-- Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress">
-      <div 
-        *ngFor="let step of getProgressSegments()" 
-        class="progress-segment" 
-        [style.background]="step.completed ? '#009970' : '#ddd'">
-      </div>
-    </div>
-    <p class="progress-text">{{ currentStep }} of 5</p>
-  </div>
-
-  <!-- Question Section -->
-  <h2 class="question">What is your favorite movie?</h2>
-  <p class="subtext">
-    (If you have more than one favorite movie, select 
-    <strong>Add Favorite Movie</strong> to enter its details.)
-  </p>
-
-  <!-- Movie List using FormArray -->
-  <form [formGroup]="assessmentForm">
-    <div formArrayName="movies">
-      <div *ngFor="let movieCtrl of movies.controls; let i = index" class="form-container" [formGroupName]="i">
-        <div class="form-group">
-          <label>Title</label>
-          <input type="text" formControlName="title" placeholder="Enter movie title" />
-          <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('title')?.value }}</p>
-        </div>
-
-        <div class="form-group">
-          <label>Year of Release</label>
-          <input type="text" formControlName="year" placeholder="Enter year of release" (input)="validateYear(i)" />
-          <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('year')?.value }}</p>
-
-          <!-- Error Message for Year -->
-          <p *ngIf="movieCtrl.get('yearError')?.value" class="error-text">Year must be a number</p>
+  <div class="assessment-container">
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" *ngIf="progress > 0">
+        <div class="progress">
+          <div 
+            *ngFor="let step of getProgressSegments()" 
+            class="progress-segment" 
+            [style.background]="step.completed ? '#009970' : '#ddd'">
+          </div>
         </div>
       </div>
+      <p class="progress-text">{{ currentStep }} of 5</p>
     </div>
-  </form>
 
-  <button class="add-movie-btn" style="margin-right:460px;" (click)="addMovie()">+ Add Favorite Movie</button>
+    <!-- Question Section -->
+    <h2>What is your favorite movie?</h2>
+    <p class="sub_heading">
+      (If you have more than one favorite movie, select 
+      <strong>Add Favorite Movie</strong> to enter its details.)
+    </p>
 
-  <!-- Buttons Fixed at Bottom -->
-  <div class="buttons-container">
-    <div class="buttons">
-      <button class="prev-btn" (click)="goBack()">← Previous Question</button>
-      <button [disabled]="!isNextEnabled()" class="next-btn" (click)="saveAndNext()">Next</button>
+    <!-- Movie List using FormArray -->
+    <form [formGroup]="assessmentForm">
+      <div formArrayName="movies">
+        <div *ngFor="let movieCtrl of movies.controls; let i = index" class="row" [formGroupName]="i">
+          <div class="form-group col-12 col-md-6">
+            <label>Title</label>
+            <input type="text" formControlName="title" placeholder="RoboCop" />
+            <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('title')?.value }}</p>
+          </div>
+
+          <div class="form-group col-12 col-md-6">
+            <label>Year of Release</label>
+            <input type="text" formControlName="year" placeholder="1987 not 2014, you monster" (input)="validateYear(i)" />
+            <p *ngIf="movieCtrl.get('isSaved')?.value" class="saved-text">{{ movieCtrl.get('year')?.value }}</p>
+
+            <!-- Error Message for Year -->
+            <p *ngIf="movieCtrl.get('yearError')?.value" class="error-text">Year must be a number</p>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <button class="add-movie-btn" (click)="addMovie()">+ Add Favorite Movie</button>
+
+    <!-- Buttons Fixed at Bottom -->
+    <div class="buttons-container">
+      <div class="buttons">
+        <button class="prev-btn" (click)="goBack()">← Previous Question</button>
+        <button [disabled]="!isNextEnabled()" class="next-btn" (click)="saveAndNext()">Next</button>
+      </div>
     </div>
   </div>
 </div>

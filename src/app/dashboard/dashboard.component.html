@@ -1,23 +1,23 @@
 <div class="dashboard-container">
     <app-header></app-header>
   
-    <div class="content">
-      <div class="left-section" style="background-image: url(../../assets/images/Union\ \(1\).png) ;  background-size: cover;
-    background-position: center center;">
-        <div class="image-container">
-          <img src="assets/images/elderly-couple.png" alt="Elderly Couple" class="profile-image" />
+    <div class="row">
+      <div class="col-12 col-md-5">
+        <div class="image_container w-100 d-flex justify-content-center align-items-center">
+            <img src="assets/images/elderly-couple.png" alt="" class="image_center">
         </div>
       </div>
-  
-      <div class="right-section">
-        <h2>Let’s get started filling out your profile</h2>
-        <p>
-          The best way for us to get you the right kind of help is to know you as well as possible.
-        </p>
-        <button class="start-btn" (click)="goToAssesment1()">Start</button>
+      <div class="col-12 col-md-7 d-flex align-items-center">
+        <div class="right_section">
+          <h2 class="main_heading mb-4">Let’s get started filling out your profile</h2>
+          <p class="text_content mb-0" >
+            The best way for us to get you the right kind of help is to know you as well as possible.
+          </p>
+          <button class="start-btn" (click)="goToAssesment1()">Start</button>
+        </div>
       </div>
     </div>
     <app-footer></app-footer>
       
-  </div>
+</div>
   

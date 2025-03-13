@@ -1,38 +1,41 @@
 <app-header></app-header>
 
 <div class="assessment-page">
-  <!-- Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress-bar" *ngIf="progress > 0">
-      <div class="progress">
-        <div 
-          *ngFor="let step of getProgressSegments()" 
-          class="progress-segment" 
-          [style.background]="step.completed ? '#009970' : '#ddd'">
+  <div class="assessment-container">
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" *ngIf="progress > 0">
+        <div class="progress">
+          <div 
+            *ngFor="let step of getProgressSegments()" 
+            class="progress-segment" 
+            [style.background]="step.completed ? '#009970' : '#ddd'">
+          </div>
         </div>
       </div>
+      <p class="progress-text">{{ currentStep }} of 5</p>
     </div>
-    <p class="progress-text">{{ currentStep }} of 5</p>
-  </div>
 
-  <!-- Question Section -->
-  <h2 class="question">How long have you been an Angular developer?</h2>
+    <!-- Question Section -->
+    <h2 class="question">How long have you been an Angular developer?</h2>
 
-  <!-- Reactive Form -->
-  <form [formGroup]="assessmentForm">
-    <div class="options">
-      <label *ngFor="let option of options">
-        <input type="radio" formControlName="experience" [value]="option">
-        {{ option }}
-      </label>
+    <!-- Reactive Form -->
+    <form [formGroup]="assessmentForm">
+      <div class="options">
+        <label *ngFor="let option of options">
+          <input type="radio" formControlName="experience" [value]="option">
+          {{ option }}
+        </label>
+      </div>
+    </form>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+      <button class="prev-btn" (click)="goBack()">← Previous Question</button>
+      <button class="next-btn" [disabled]="!assessmentForm.value.experience" (click)="goToNext()">Next</button>
     </div>
-  </form>
-
-  <!-- Navigation Buttons -->
-  <div class="buttons">
-    <button class="prev-btn" (click)="goBack()">← Previous Question</button>
-    <button class="next-btn" [disabled]="!assessmentForm.value.experience" (click)="goToNext()">Next</button>
   </div>
+  
 </div>
 
 <app-footer></app-footer>

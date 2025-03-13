@@ -1,336 +1,195 @@
+/* Ensure the assessment page fills the whole screen */
 .assessment-page {
-    width: 100%;
-    min-height: 100vh; /* Full viewport height */
-    padding: 40px 8%;
-    background-color: #fdf8f1;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center horizontally */
-    text-align: center;
+  margin: 100px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Full-width container inside */
+.assessment-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
 }
 
 .progress-bar {
-    display: flex;
-    width: 100%;
-    height: 8px;
-    background: #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .progress {
-    display: flex;
-    gap: 4px; /* Space between segments */
-    width: 100%;
+  display: flex;
+  gap: 4px; /* Space between segments */
+  width: 100%;
 }
 
 .progress-segment {
-    flex-grow: 1;
-    height: 100%;
-    background: #009970; /* Change color as needed */
+  flex-grow: 1;
+  height: 100%;
+  background: #009970; /* Change color as needed */
 }
 
 
-.question {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+/* Typography */
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: 30px;
+  color: #363636;
+}
+
+.sub_heading{
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 60px;
+  color: #363636;
 }
 
 .subtext {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
-/* Form Layout */
-.form-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    gap: 212px;
-    align-items: flex-start; /* Align inputs to the top */
+/* Options */
+.options {
+  display: flex;
+  justify-content: start;
+  gap: 35%;
+  margin-bottom: 20px;
 }
 
-
-@media only screen and (max-width: 480px) {
-.form-container {
-  gap: 20px;
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-}
-.form-group {
-    flex: 1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Form Labels */
-.form-group label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
+label {
+  font-size: 16px;
+  font-weight: 800;
+  color: #333;
+  padding-bottom: 10px;
 }
 
-/* Input Fields */
-.form-group input {
-    width: 100%;
+input[type="text"] {
+     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
-    margin-bottom: 10px; /* Space between input and button */
+    margin-bottom: 10px;
 }
 
-/* Add Favorite Movie Button - Below Title Input */
-.add-movie-btn {
-    background: none;
-    border: 1px solid #333;
-    padding: 6px 12px; /* Reduced padding */
-    font-size: 12px; /* Smaller font size */
-    color: #333;
-    border-radius: 4px; /* Slightly reduced border-radius */
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 5px; /* Keeps spacing from input field */
-    width: fit-content; /* Adjusts to text size */
+
+.add-movie-btn{
+  all: unset;
+  color: #363636;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  height: 45px;
+  width:220px;
+  border: 2px solid #22549F;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .add-movie-btn:hover {
-    background: #f5f5f5;
+  color: white;
+  background-color: #22549F;
 }
 
-/* Ensure Buttons are Fixed at Bottom */
-.buttons-container {
-    margin-top: auto; /* Pushes buttons to the bottom */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-/* Navigation Buttons */
+/* Buttons */
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 600px;
-    padding: 0 20px; /* Adds spacing on both sides */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
 }
 
-
-/* Previous Button */
-.prev-btn {
-    background: none;
-    border: none;
-    color: #0056b3;
-    font-size: 16px;
-    cursor: pointer;
-    position: relative;
-    left: -10px; /* Moves the button more to the left */
+.prev-btn{
+  all: unset;
+  color: #22549F;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  
 }
 
-/* Next Button */
+.prev-btn:hover {
+  text-decoration: underline;
+}
+
 .next-btn {
-    background: #ff9f00; /* Updated color from Figma */
-    border: none;
-    padding: 12px 30px; /* Increased right padding for better positioning */
-    font-size: 18px;
-    color: #ffffff; /* White text as in Figma */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    position: relative;
-    right: -10px; /* Moves the button more to the right */
+  background-color: #fdd835;
+  color: #333;
+  border: none;
+  width: 240px;
+  height: 55px;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: transparent;
+    border: 2px solid black;
+  }
 }
+@media (max-width: 768px) {
+  .add-movie-btn{
+    width: 180px;
+    height: 40px;
+  }
+  .next-btn {
+    width: 220px;
+    height: 50px;
+    font-size: 20px;
+  }
+  .column  {
+    gap: 50%;
+  }
+  input[type="checkbox"] {
+    scale: 1.2;
+  }
+  label {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .sub_heading{
+    margin-bottom: 30px;
+  }
+  .assessment-container {
+    padding: 1rem;
+  }
+  .buttons {
+    margin-top: 50px;
+  }
+}
+
 
 .next-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+  background-color: #ccc !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
+@media only screen and (max-width: 480px) {
+.assessment-page{
+  height: auto!important;
+}
 }
 
-
-.next-btn:hover:not(:disabled) {
-    background: #ff7f00; /* Darker shade for hover effect */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .assessment-page {
-        padding: 20px;
-    }
-    
-    .form-container {
-        flex-direction: column;
-    }
-
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-    }
-
-    .prev-btn, .next-btn {
-        width: 100%;
-        text-align: center;
-        position: static; /* Reset positioning for smaller screens */
-        margin-top: 10px;
-    }
-}
 .error-text {
     color: red;
     font-size: 14px;
     margin-top: 5px;
   }
-
-
-
-  /* Full-page layout */
-.assessment-page {
-    width: 100%;
-    min-height: 100vh;
-    padding: 40px;
-    background-color: #fdf8f1;
-  }
-  
-  .progress-bar {
-    display: flex;
-    width: 100%;
-    height: 8px;
-    background: #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.progress {
-    display: flex;
-    gap: 4px; /* Space between segments */
-    width: 100%;
-    height: 8px;
-}
-
-.progress-segment {
-    flex-grow: 1;
-    height: 100%;
-    background: #009970; /* Change color as needed */
-}
-
-  
-  /* Question */
-  .question {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 20px auto;
-    max-width: 800px;
-  }
-  
-  /* Options */
-  .options {
-    max-width: 800px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .options label {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    font-size: 18px;
-    background: white;
-  }
-  
-  .options input {
-    margin-right: 10px;
-  }
-  
-  /* Buttons */
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    max-width: 800px;
-    margin: 20px auto;
-  }
-  
-  .prev-btn {
-    background: none;
-    border: none;
-    color: #0056b3;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .next-btn {
-    background: #FFD233;
-    border: none;
-    padding: 12px 25px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .next-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .next-btn:hover:not(:disabled) {
-    background: #FFC107;
-  }
-  .progress-bar-container
-  {
-    width: 100%;
-    max-width: 700px;
-    background-color: #fdf8f1;
-    padding: 0px 2rem;
-    text-align: left;
-   
-  }
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .assessment-page {
-      padding: 20px;
-    }
-  
-    .progress-bar-container,
-    .question,
-    .options,
-    .buttons {
-      max-width: 100%;
-    }
-  
-    .options label {
-      font-size: 16px;
-    }
-  
-    .next-btn {
-      font-size: 16px;
-      padding: 10px 20px;
-    }
-  }
-  .progress-segment {
-    display: flex
-;
-    width: 100%;
-    height: 8px;
-    background: #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}

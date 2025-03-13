@@ -1,26 +1,22 @@
-<app-header></app-header>
+<div class="dashboard-container">
+  <app-header></app-header>
 
-<div class="success-page">
-  <div class="success-container">
-    <!-- Left Content -->
-    <div class="success-text"style="background-image: url(../../assets/images/Union\ \(1\).png) ;  background-size: cover;
-    background-position: center center;">
-      <h1>You’ve completed your quiz</h1>
-      <p>
-        We really appreciate that you took the time to log the answers to this quiz
-        to the console as a JavaScript object!
-      </p>
-      <button class="success-btn">Take me to your leader</button>
-    </div>
-
-    <!-- Right Image -->
-    <div class="success-image">
-      <div class="image-container">
-        <img src="assets/images/success-image.png" alt="Happy Seniors" />
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-5">
+      <div class="image_container w-100 d-flex align-items-center">
+        <div class="right_section">
+          <h2 class="main_heading mb-4">You’ve completed your quiz</h2>
+          <p class="text_content mb-0" >
+            We really appreciate that you took the time to log the answers to this quiz to the console as a JavaScript object!
+          </p>
+          <button class="start-btn">Take me to your leader</button>
+        </div>
       </div>
     </div>
+    <div class="col-12 col-md-6 col-lg-7 d-flex justify-content-center align-items-center">
+      <img src="assets/images/elderly-couple.png" alt="" class="image_center">
+    </div>
   </div>
+  <app-footer></app-footer>
+    
 </div>
-
-<!-- Footer -->
-<app-footer></app-footer>

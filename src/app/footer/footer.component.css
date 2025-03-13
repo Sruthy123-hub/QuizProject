@@ -1,25 +1,35 @@
 .footer {
     width: 100%;
     background-color: #fdf8f1;
-    padding: 1rem 2rem;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 400;
     color: #666;
     position: fixed;
     bottom: 0;
+    padding:30px 100px;
   }
-  
-  .footer .links {
-    margin-top: 10px;
-  }
-  
+
   .footer .links a {
-    color: #007bff;
+    color: #363636;
+    font-weight: bolder;
     text-decoration: none;
-    margin: 0 10px;
   }
   
   .footer .links a:hover {
     text-decoration: underline;
   }
   
+  @media (max-width: 950px) {
+    .footer {
+      font-size: 14px;
+      padding:20px 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer {
+      font-size: 11px;
+      padding:10px 10px;
+    }
+  }

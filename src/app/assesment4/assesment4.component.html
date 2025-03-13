@@ -1,61 +1,66 @@
 <app-header></app-header>
 
 <div class="assessment-page">
-  <!-- Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress">
-      <div 
-        *ngFor="let step of getProgressSegments()" 
-        class="progress-segment" 
-        [style.background]="step.completed ? '#009970' : '#ddd'">
+  <div class="assessment-container">
+      <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" *ngIf="progress > 0">
+        <div class="progress">
+          <div 
+            *ngFor="let step of getProgressSegments()" 
+            class="progress-segment" 
+            [style.background]="step.completed ? '#009970' : '#ddd'">
+          </div>
+        </div>
       </div>
+      <p class="progress-text">{{ currentStep }} of 5</p>
     </div>
-    <p class="progress-text">{{ currentStep }} of 5</p>
+
+    <!-- Question Section -->
+    <h2 class="question">What’s your favorite movie snack?</h2>
+
+    <!-- Movie Snack Options using Reactive Forms -->
+    <form [formGroup]="assessmentForm">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <label>
+            <input type="radio" formControlName="selectedSnack" value="Popcorn" />
+            Popcorn
+          </label>
+          <label>
+            <input type="radio" formControlName="selectedSnack" value="Junior Mints" />
+            Junior Mints
+          </label>
+          <label>
+            <input type="radio" formControlName="selectedSnack" value="Skittles" />
+            Skittles
+          </label>
+        </div>
+        
+        <div class="col-md-6 col-12">
+          <label>
+            <input type="radio" formControlName="selectedSnack" value="Nachos" />
+            Nachos
+          </label>
+          <label>
+            <input type="radio" formControlName="selectedSnack" value="Milk Duds" />
+            Milk Duds
+          </label>
+          <label class="long-text">
+            <input type="radio" formControlName="selectedSnack" value="Criterion Collection" />
+            I only watch Criterion Collection films at Arthouse theaters that disallow snacks because there might be a crinkling sound that disrupts other patrons.
+          </label>
+        </div>
+      </div>
+    </form>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+      <a class="prev-btn" (click)="goBack()">← Previous Question</a>
+      <button class="next-btn" [disabled]="!assessmentForm.valid" (click)="saveAndNext()">Next</button>
+    </div>
   </div>
 
-  <!-- Question Section -->
-  <h2 class="question">What’s your favorite movie snack?</h2>
-
-  <!-- Movie Snack Options using Reactive Forms -->
-  <form [formGroup]="assessmentForm">
-    <div class="options-container">
-      <div class="options-left">
-        <label>
-          <input type="radio" formControlName="selectedSnack" value="Popcorn" />
-          Popcorn
-        </label>
-        <label>
-          <input type="radio" formControlName="selectedSnack" value="Junior Mints" />
-          Junior Mints
-        </label>
-        <label>
-          <input type="radio" formControlName="selectedSnack" value="Skittles" />
-          Skittles
-        </label>
-      </div>
-      
-      <div class="options-right">
-        <label>
-          <input type="radio" formControlName="selectedSnack" value="Nachos" />
-          Nachos
-        </label>
-        <label>
-          <input type="radio" formControlName="selectedSnack" value="Milk Duds" />
-          Milk Duds
-        </label>
-        <label class="long-text">
-          <input type="radio" formControlName="selectedSnack" value="Criterion Collection" />
-          I only watch Criterion Collection films at Arthouse theaters that disallow snacks because there might be a crinkling sound that disrupts other patrons.
-        </label>
-      </div>
-    </div>
-  </form>
-
-  <!-- Navigation Buttons -->
-  <div class="buttons-container">
-    <a class="prev-btn" (click)="goBack()">← Previous Question</a>
-    <button class="next-btn" [disabled]="!assessmentForm.valid" (click)="saveAndNext()">Next</button>
-  </div>
 </div>
 
 <app-footer></app-footer>

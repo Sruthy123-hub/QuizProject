@@ -64,3 +64,32 @@
 padding: 8px!important;
   }
 }
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('assets/SofiaProRegular.otf');
+}
+
+body{
+  font-family: CustomFont;
+}
+
+@font-face {
+  font-family: 'CustomFont1';
+  src: url('assets/Alda-OT-CEV.otf');
+}
+
+.main_heading{
+  font-family: CustomFont1;
+  font-weight: 400;
+  line-height: 48px;
+  font-size: 40px;
+}
+@media (max-width: 768px) {
+  .main_heading{
+    font-family: CustomFont1;
+    font-weight: 400;
+    line-height: 32px;
+    font-size: 32px;
+  }
+}
