@@ -71,7 +71,7 @@ export class LoginComponent {
               severity: 'success',
               summary: 'Login Successful',
               detail: `Welcome, ${username}!`,
-              life: 2000
+              life: 2000000000000000
             });
 
            
@@ -84,7 +84,7 @@ export class LoginComponent {
               severity: 'warn',
               summary: 'Warning',
               detail: response.message || 'Login failed.',
-              life: 2000
+              life: 20000000000000
             });
           }
         },
@@ -94,7 +94,7 @@ export class LoginComponent {
             severity: 'warn',
             summary: 'Warning',
             detail: `Invalid credentials. Please try again.`,
-            life: 2000
+            life: 20000000000000000000
           });
         }
       });
@@ -104,7 +104,7 @@ export class LoginComponent {
         severity: 'warn',
         summary: 'Warning',
         detail: `Please fill in all required fields.`,
-        life: 2000
+        life: 20000000000000000000000
       });
     }
   }
