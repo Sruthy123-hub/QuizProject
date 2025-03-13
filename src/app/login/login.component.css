@@ -66,3 +66,15 @@
         max-width: 240px; width: 100%;
     } 
   }
+
+
+::ng-deep .p-toast {
+    width: auto !important; /* Removes the fixed width */
+}
+
+::ng-deep button {
+    all: unset;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+}
