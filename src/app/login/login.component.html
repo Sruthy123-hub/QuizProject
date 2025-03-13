@@ -18,11 +18,13 @@
           <input type="password" id="password" class="form-control" formControlName="password" 
                  placeholder="Enter your password" aria-label="Password">
         </div>
-  
-        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold" [disabled]="isLoading">
-          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-          {{ isLoading ? 'Logging in...' : 'Login' }}
-        </button>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary py-2 fw-bold" [disabled]="isLoading" >
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+            {{ isLoading ? 'Logging in...' : 'Login' }}
+          </button>
+        </div>
+        
       </form>
   
       <!-- <div class="text-center mt-3">
