@@ -55,3 +55,14 @@
     flex-direction: column;
     gap: 5px;
 }
+
+
+
+.login{
+    max-width: 400px; width: 100%;
+}
+@media only screen and (max-width: 280px) {
+    .login{
+        max-width: 240px; width: 100%;
+    } 
+  }

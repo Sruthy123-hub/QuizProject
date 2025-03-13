@@ -140,3 +140,13 @@ app-header, app-footer {
 .form-input.ng-invalid.ng-touched {
     border-color: red;
 }
+
+
+.minwidth{
+min-width:350px; 
+}
+@media only screen and (max-width: 480px) {
+    .minwidth{
+        min-width:auto; 
+        }
+}

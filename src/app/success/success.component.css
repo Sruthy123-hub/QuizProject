@@ -13,6 +13,17 @@
     width: 100%;
     max-width: 1200px;
   }
+  @media only screen and (max-width: 480px) {
+    .success-container {
+      flex-direction: column;
+    }
+    .success-text{
+      padding: 8px!important;
+    }
+    .image-container{
+      display: none;
+    }
+  }
   
   /* Left Side (Text Section) */
   .success-text {

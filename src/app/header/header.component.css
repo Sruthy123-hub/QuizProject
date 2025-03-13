@@ -1,0 +1,14 @@
+.logohead{
+    width:15%;
+}
+.profile-image {
+    width: 15%!important;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 480px) {
+    .profile-image{
+        width:50%!important;
+    } 
+  }

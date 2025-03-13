@@ -38,7 +38,7 @@
       <div class="city-state-zip">
         <div>
           <label class="sub-label">City</label>
-          <input style="min-width:350px" type="text" class="form-input small-input" placeholder="City" formControlName="city" />
+          <input type="text" class="form-input small-input minwidth" placeholder="City" formControlName="city" />
           <p class="error-message" *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
             Only letters are allowed.
           </p>
